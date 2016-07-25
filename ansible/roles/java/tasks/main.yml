@@ -1,0 +1,19 @@
+# === Install Java Development Kit
+# Debian
+- name: Install necessary packages
+  apt: name=openjdk-8-jdk  update_cache=yes state=present
+  when: ansible_os_family == 'Debian'
+
+# RedHat
+- name: Install necessary packages
+  yum: name=java-1.8.0-openjdk update_cache=yes state=present
+  when: ansible_os_family == 'RedHat'
+# ===
+- name: Ensure correct permissions on directories
+  file: path=/opt/hbc state=directory owner=vagrant group=vagrant mode=0755 recurse=yes
+
+- name: Copy jar to /opt/hbc
+  copy: src={{ item }} dest=/opt/hbc/ owner=vagrant group=vagrant mode=0755
+  with_items:
+    - HbcStatus-1.0-SNAPSHOT-jar-with-dependencies.jar
+    - run.sh
