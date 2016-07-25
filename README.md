@@ -1,7 +1,7 @@
 # hbc_status
 Small test app to narrow down an issue with hosebird
 
-To fire up vm clone the repository and build the fat jar. This needs to be put into ansible/roles/java/files
+To fire up vm clone the repository, copy auth.properties.example to auth.properties and update your credential, then build the fat jar. This needs to be put into ansible/roles/java/files
 
 Afterwards run vagrant up to provision machine and vagrant ssh to connect.
 
